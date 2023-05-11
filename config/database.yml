@@ -22,6 +22,12 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  url: <%= ENV['DATABASE_URL'] %>
+  database: db/production.sqlite3
+
+# Postges didn't work on render since pg due to error.
+# Gem::LoadError: pg is not part of the bundle. Add it to your Gemfile.
+#production:
+#  <<: *default
+#  adapter: postgresql
+#  encoding: unicode
+#  url: <%= ENV['DATABASE_URL'] %>
