@@ -100,6 +100,10 @@ class LogoutTest < Logout
     assert_redirected_to root_url
   end
 
+end
+
+class RememberingTest < UsersLogin
+
   test "login with remembering" do
     log_in_as(@user, remember_me: '1')
     assert_not cookies[:remember_token].blank?
@@ -112,5 +116,4 @@ class LogoutTest < Logout
     log_in_as(@user, remember_me: '0')
     assert cookies[:remember_token].blank?
   end
-
 end
