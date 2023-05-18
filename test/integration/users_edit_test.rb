@@ -38,8 +38,12 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
+    # test session[:forwarding_url] == edit_user_url(@user)
+    assert_equal session[:forwarding_url], edit_user_url(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_url(@user)
+    # test session[:forwarding_url] == nil after loginrails
+    assert_nil session[:forwarding_url]
     name  = "Foo Bar"
     email = "foo@bar.com"
     patch user_path(@user), params: { user: { name:  name,
