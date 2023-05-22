@@ -39,6 +39,10 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  ### should be replaced with render host when deployed to rendar ###
+  host = 'rt4716-zany-halibut-x9qx4v555246j-3000.preview.app.github.dev' 
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
