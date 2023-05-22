@@ -49,7 +49,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  # アカウントを有効にする
+  # アカウントを有効にするapp/controllers/users_controller.rb
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
   end
