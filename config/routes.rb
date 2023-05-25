@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   # get "users/1", to: "users#show"
   # ...
   resources :users
+  resources :account_activations, only: [:edit]
+
 
 end
