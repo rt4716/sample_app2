@@ -4,6 +4,7 @@ class PasswordResets < ActionDispatch::IntegrationTest
 
   def setup
     ActionMailer::Base.deliveries.clear
+    @user = users(:michael)
   end
 end
 
@@ -102,7 +103,7 @@ class ExpiredToken < PasswordResets
   def setup
     super
     # パスワードリセットのトークンを作成する
-    post password_resets_path,
+    post password_resets_path, 
          params: { password_reset: { email: @user.email } }
     @reset_user = assigns(:user)
     # トークンを手動で失効させる
